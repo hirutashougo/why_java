@@ -30,7 +30,7 @@ public class FantanRule implements Rule {
 		//テーブルに置かれているカードを確認
 		Card[][] gameTableCards = gameTable.getCard();
 		//プレイヤーの手札を確認
-		Card[] playerHandCards = gameHand.playerHand;
+		Card[] playerHandCards = gameHand.;
 		//プレーヤーの手札のカードの順番を表す変数を宣言
 		int handOrder = gameHand.getNumberOfCards();
 		//テーブルの上にあるカードのマークの順番を表す変数を宣言
