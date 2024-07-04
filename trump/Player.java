@@ -26,7 +26,7 @@ public abstract class Player {
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
-	public Player(String playerName, Master gameMaster, Table gameTable) {
+	public Player(String playerName, Master gameMaster, Table gameTable, Rule gameRule) {
 
 		//プレイヤーの名前のフィールドを初期化して宣言
 		this.playerName = playerName;
@@ -34,6 +34,8 @@ public abstract class Player {
 		this.gameMaster = gameMaster;
 		//テーブルのフィールドを初期化して宣言
 		this.gameTable = gameTable;
+		//ルールのフィールドを初期化して宣言
+		this.gameRule = gameRule;
 	}
 	
 	/*

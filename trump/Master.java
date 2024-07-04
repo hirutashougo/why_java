@@ -11,8 +11,8 @@ import java.util.ArrayList;
  */
 public class Master {
 
-	//手札にあるカードを保持するためのリスト
-	private ArrayList<Player> cardLists = new ArrayList<>();
+	//参加したプレイヤーを保持するためのリスト
+	private ArrayList<Player> playersList = new ArrayList<>();
 
 	/*
 	 * 関数名：prepareGame
@@ -34,7 +34,7 @@ public class Master {
 		int numberOfCards = handCards.getNumberOfCards();
 
 		//プレイヤーの人数を取得する
-		int numberOfPlayers = cardLists.size();
+		int numberOfPlayers = playersList.size();
 
 		//カードの枚数分、処理を繰り返す
 		for (int processIndex = 0; processIndex < numberOfCards; processIndex++) {
@@ -43,7 +43,7 @@ public class Master {
 			Card cardDeck = handCards.pickCard(0);
 
 			//カードを配るプレイヤーの順番を決める
-			Player gamePlayers = (Player) cardLists.get(processIndex % numberOfPlayers);
+			Player gamePlayers = (Player) playersList.get(processIndex % numberOfPlayers);
 			//カードを渡す(プレイヤーが受け取る)
 			gamePlayers.receiveCard(cardDeck);
 
@@ -64,23 +64,23 @@ public class Master {
 		System.out.println("【ゲームを開始します】");
 
 		//プレイヤーの人数を取得する
-		for (int count = 0; cardLists.size() > 1; count++) {
+		for (int count = 0; playersList.size() > 1; count++) {
 
 			//プレイヤーを進行順序を確認
-			int playerIndex = count % cardLists.size();
+			int playerIndex = count % playersList.size();
 			//プレイヤー同士の前後関係を確認
-			int nextPlayerIndex = (count + 1) % cardLists.size();
+			int nextPlayerIndex = (count + 1) % playersList.size();
 
 			//指名するプレイヤーの取得
-			Player player = (Player) cardLists.get(playerIndex);
+			Player gamePlayer = (Player) playersList.get(playerIndex);
 
 			//その次のプレイヤーの取得
-			Player nextPlayer = (Player) cardLists.get(nextPlayerIndex);
+			Player nextPlayer = (Player) playersList.get(nextPlayerIndex);
 
 			//プレイヤーを指名
-			System.out.println("\n" + player + "さんの番です");
+			System.out.println("\n" + gamePlayer + "さんの番です");
 			//次のプレイヤーへ受け渡す
-			player.playGame(nextPlayer);
+			gamePlayer.playGame(nextPlayer);
 		}
 
 		//ババ抜きを終了しましたと表示
@@ -101,7 +101,7 @@ public class Master {
 		System.out.println(gameWinner + "さんが上がりました!");
 
 		//上がったプレイヤーをゲームから除外
-		cardLists.remove(cardLists.indexOf(gameWinner));
+		deregisterPlayer(gameWinner);
 	}
 
 	/*
@@ -115,27 +115,27 @@ public class Master {
 	public void registerPlayer(Player joinPlayer) {
 
 		//参加者をゲームに登録する
-		cardLists.add(joinPlayer);
+		playersList.add(joinPlayer);
 	}
 	
 	/*
-	 * 関数名：dereregisterPlayer
+	 * 関数名：deregisterPlayer
 	 * 概要:ゲームのプレイヤーを登録から解除
 	 * 引数：解除するプレイヤー(Player型)
 	 * 戻り値：なし
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
-	public void dereregisterPlayer(Player leavedPlayer) {
+	public void deregisterPlayer(Player leavedPlayer) {
 
 		//離脱者をゲームの登録から解除
-		cardLists.remove(cardLists.indexOf(leavedPlayer));
+		playersList.remove(playersList.indexOf(leavedPlayer));
 		
 		//残り一人になった場合
-		if (cardLists.size() == 1) {
+		if (playersList.size() == 1) {
 			
 			//敗者が決定する
-			Player gameLoser = (Player) cardLists.get(0);
+			Player gameLoser = (Player) playersList.get(0);
 			//敗者を伝える
 			System.out.println(gameLoser + "さんの負けです!");
 		}

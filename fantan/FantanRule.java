@@ -26,38 +26,60 @@ public class FantanRule implements Rule {
 	 * 作成日：2024/07/02
 	*/
 	public Card[] findCandidate(Hand gameHand, Table gameTable) {
+		
+		//手札の枚数を確認
+		int numberOfHand = gameHand.getNumberOfCards();
 
 		//テーブルに置かれているカードを確認
 		Card[][] gameTableCards = gameTable.getCard();
-		//プレイヤーの手札を確認
-		Card[] playerHandCards = gameHand.;
-		//プレーヤーの手札のカードの順番を表す変数を宣言
-		int handOrder = gameHand.getNumberOfCards();
-		//テーブルの上にあるカードのマークの順番を表す変数を宣言
-		int suitOrder = Card.SUIT_NUMBER;
-		//テーブルの上にあるカードの数字の順番を表す変数を宣言
-		int numberOrder = Card.CARD_NUMBER;
 
 		//テーブルに置くことのできるカードの組み合わせの変数を宣言
-		Card[] ableToPlaceCard = null;
+		Card[] candidateCard = null;
 
-		//カードの回数分繰り返す処理
-		for (suitOrder = 0; suitOrder < Card.SUIT_NUMBER; suitOrder++) {
+		//手札のカードの回数分繰り返す処理
+		for (int handOrder = 0; handOrder < numberOfHand; handOrder++) {
 
-			//カードの数だけ繰り返す処理
-			for (numberOrder = 0; numberOrder < Card.CARD_NUMBER; numberOrder++) {
+			//手元のカードを確認
+			Card lookingCard = gameHand.lookCard(handOrder);
+			//手元のカードのスートを確認
+			int cardSuit = lookingCard.getSuit();
+			//手元のカードの数字を確認
+			int cardNumber = lookingCard.getNumber();
+			
+			//カードの数字を配列に合わせて調整
+			int adjustmentNmber = cardNumber - 1;
+			
+			//右側のカードの数字
+			int rightSideNumber = (adjustmentNmber == 12) ? 12: adjustmentNmber + 1;
+			//左側のカードの数字
+			int leftSideNumber = (cardNumber == 1) ? 1: adjustmentNmber - 1;
 
-				//テーブルに置く場所がある場合
-				if () {
+			//テーブル上にカード列の左側に連ねて置ける場所があった場合
+			if (gameTableCards[cardSuit - 1][rightSideNumber] != null
+					&& gameTableCards[cardSuit - 1][adjustmentNmber] == null) {
 
-					//
-					
-				}
+				//テーブルに置けるカードがあると判断
+				candidateCard = new Card[1];
+				//テーブルに置けるカードを確認
+				candidateCard[0] = gameHand.pickCard(handOrder);
+				//処理を抜ける
+				break;
+
+				//テーブル上にカード列の右側に連ねて置ける場所があった場合
+			} else if (gameTableCards[cardSuit - 1][leftSideNumber] != null
+					&& gameTableCards[cardSuit - 1][adjustmentNmber] == null) {
+
+				//テーブルに置けるカードがあると判断
+				candidateCard = new Card[1];
+				//テーブルに置けるカードを確認
+				candidateCard[0] = gameHand.pickCard(handOrder);
+				//処理を抜ける
+				break;
 			}
 		}
 
 		//テーブルに置くことのできるカードの組み合わせを返却
-		return ableToPlaceCard;
+		return candidateCard;
 	}
 
 }

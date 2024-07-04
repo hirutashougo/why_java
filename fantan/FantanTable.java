@@ -13,7 +13,7 @@ import trump.Table;
  */
 public class FantanTable implements Table {
 
-	//トランプのカードを保持するための行列を宣言
+	//テーブルの状態を表す行列を宣言
 	private Card[][] gameTable = new Card[Card.SUIT_NUMBER][Card.CARD_NUMBER];
 
 	/*
@@ -32,7 +32,7 @@ public class FantanTable implements Table {
 		int trumpSuit = playerCard[0].getSuit();
 
 		//テーブルにトランプを並べる
-		gameTable[trumpNumber - 1][trumpSuit - 1] = playerCard[0];
+		gameTable[trumpSuit - 1][trumpNumber - 1] = playerCard[0];
 	}
 
 	/*
@@ -45,7 +45,7 @@ public class FantanTable implements Table {
 	*/
 	public Card[][] getCard() {
 
-		//テーブルに置かれたカードをを返却
+		//テーブルに置かれたカードを返却
 		return gameTable;
 	}
 
@@ -60,7 +60,7 @@ public class FantanTable implements Table {
 	public String toString() {
 
 		//StringBufferクラスの変数を設定
-		StringBuffer tableLineUp = new StringBuffer();
+		StringBuffer tableLineUp = new StringBuffer(200);
 		
 		//カードの回数分繰り返す処理
 		for(int suitCount = 0; suitCount < Card.SUIT_NUMBER; suitCount++) {

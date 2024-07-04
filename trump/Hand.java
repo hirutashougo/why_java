@@ -44,7 +44,7 @@ public class Hand {
 		if ((0 <= cardPosition) && (cardPosition < playerHand.size())) {
 
 			//カードの位置を指定
-			lookingCard = (Card) playerHand.remove(cardPosition);
+			lookingCard = (Card) playerHand.get(cardPosition);
 		}
 		//指定した位置のカードを返却
 		return lookingCard;
@@ -130,12 +130,12 @@ public class Hand {
 		StringBuffer bufferString = new StringBuffer();
 
 		//手札の枚数を表す変数を宣言
-		int size = playerHand.size();
+		int handSize = playerHand.size();
 		//手札の枚数が0超過の場合
-		if (size > 0) {
+		if (handSize > 0) {
 
 			//手札の枚数分だけ繰り返す処理
-			for (int index = 0; index < size; index++) {
+			for (int index = 0; index < handSize; index++) {
 
 				//手札のカードを用意
 				Card card = (Card) playerHand.get(index);

@@ -63,7 +63,7 @@ public class Card {
 	*/
 	public int getSuit() {
 		//カードのスートを表す数字を返却
-		return cardNumber;
+		return suitNumber;
 	}
 
 	/*
@@ -167,7 +167,7 @@ public class Card {
 		}
 		//その他の場合
 		default: {
-			//
+			//そのまま数字を表示
 			bufferString.append(cardNumber);
 			//処理を終了
 			break;
