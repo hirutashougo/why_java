@@ -18,6 +18,16 @@ public class Card {
 	public static final int SUIT_CLUB = 3;
 	//ハートを表す定数を宣言
 	public static final int SUIT_HEART = 4;
+	//トランプのエースを表す定数を宣言
+	public static final int ACE_CONSTANT = 1;
+	//トランプのキングを表す定数を宣言
+	public static final int KING_CONSTANT = 13;
+	//トランプのクイーンを表す定数を宣言
+	public static final int QUEEN_CONSTANT = 12;
+	//トランプのジャックを表す定数を宣言
+	public static final int JACK_CONSTANT = 11;
+	//トランプのテンを表す定数を宣言
+	public static final int TEN_CONSTANT = 10;
 
 	//カードのスートを表す変数をフィールドを宣言
 	private int suitNumber;
@@ -114,7 +124,7 @@ public class Card {
 			switch (cardNumber) {
 
 			//カードの数字が1の場合
-			case 1: {
+			case ACE_CONSTANT: {
 
 				//カードにとAと追加する
 				bufferString.append("A");
@@ -122,7 +132,7 @@ public class Card {
 				break;
 			}
 			//カードの数字が10の場合
-			case 10: {
+			case TEN_CONSTANT: {
 
 				//カードにとTと追加する
 				bufferString.append("T");
@@ -130,7 +140,7 @@ public class Card {
 				break;
 			}
 			//カードの数字が10の場合
-			case 11: {
+			case JACK_CONSTANT: {
 
 				//カードにJと追加する
 				bufferString.append("J");
@@ -138,7 +148,7 @@ public class Card {
 				break;
 			}
 			//カードの数字が12の場合
-			case 12: {
+			case QUEEN_CONSTANT: {
 
 				//カードにQと追加する
 				bufferString.append("Q");
@@ -146,7 +156,7 @@ public class Card {
 				break;
 			}
 			//カードの数字が13の場合
-			case 13: {
+			case KING_CONSTANT: {
 
 				//カードにKと追加する
 				bufferString.append("K");
