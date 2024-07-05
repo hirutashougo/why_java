@@ -22,7 +22,7 @@ public abstract class Player {
 	/*
 	 * コンストラクタ名：Player
 	 * 概要:プレイヤーに関する情報を初期化して宣言
-	 * 引数：
+	 * 引数：プレイヤー名(String型),進行役(Mster型),テーブル(Table型),ルール(Rule型)
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/

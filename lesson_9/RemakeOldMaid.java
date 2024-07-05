@@ -1,10 +1,25 @@
 package lesson_9;
 
-import oldMaid.Master;
-import oldMaid.Player;
-import oldMaid.Table;
+//oldMaidRemakeパッケージのOldMaidPlayerクラスをインポート
+import oldMaidRemake.OldMaidPlayer;
+//oldMaidRemakeパッケージのOldMaidRuleクラスをインポート
+import oldMaidRemake.OldMaidRule;
+//oldMaidRemakeパッケージのOldMaidTableクラスをインポート
+import oldMaidRemake.OldMaidTable;
+//trumpパッケージのCardクラスをインポート
 import trump.Card;
+//trumpパッケージのHandクラスをインポート
 import trump.Hand;
+//trumpパッケージのJokerクラスをインポート
+import trump.Joker;
+//trumpパッケージのMasterクラスをインポート
+import trump.Master;
+//trumpパッケージのPlayerクラスをインポート
+import trump.Player;
+//trumpパッケージのRuleクラスをインポート
+import trump.Rule;
+//trumpパッケージのTableクラスをインポート
+import trump.Table;
 
 /*
  * クラス名：RemakeOldMaid
@@ -26,26 +41,26 @@ public class RemakeOldMaid {
 	*/
 	private static Hand createTrump() {
 		
-		//
+		//トランプを用意する
 		Hand trump = new Hand();
 		
-		//
-		for(int number = 1; number <= 13; number++) {
+		//スートごとにトランプを生成
+		for(int number = 1; number <= Card.CARD_NUMBER; number++) {
 			
-			//
+			//クローバーのトランプを生成
 			trump.addCard(new Card(Card.SUIT_CLUB, number));
-			//
+			//ダイヤモンドのトランプを生成
 			trump.addCard(new Card(Card.SUIT_DIAMOND, number));
-			//
+			//ハートのトランプを生成
 			trump.addCard(new Card(Card.SUIT_HEART, number));
-			//
+			//スペードのトランプを生成
 			trump.addCard(new Card(Card.SUIT_SPADE, number));
 		}
 		
-		//
-		trump.addCard(new Card(0, Card.JOKER_CONSTANT));
+		//ジョーカーを生成
+		trump.addCard(new Joker());
 		
-		//
+		//用意したトランプを返却
 		return trump;
 	}
 
@@ -59,35 +74,38 @@ public class RemakeOldMaid {
 	*/
 	public static void main(String[] args) {
 
-		//
-		Master master = new Master();
+		//ゲームの進行役を呼ぶ
+		Master gameMaster = new Master();
+		
+		//ルールの生成
+		Rule gameRule = new OldMaidRule();
 
-		//
-		Table field = new Table();
+		//テーブルの生成
+		Table gameTable = new OldMaidTable();
 
-		//プレイヤー村田を生成
-		Player murata = new Player("村田", master, field);
-		//プレイヤー山田を生成
-		Player yamada = new Player("山田", master, field);
-		//プレイヤー齋藤を生成
-		Player saito = new Player("齋藤", master, field);
+		//プレイヤー村田の生成
+		Player playerMurata = new OldMaidPlayer("村田", gameMaster, gameTable, gameRule);
+		//プレイヤー山田の生成
+		Player playerYamada = new OldMaidPlayer("山田", gameMaster, gameTable, gameRule);
+		//プレイヤー齋藤の生成
+		Player playerSaito = new OldMaidPlayer("齋藤", gameMaster, gameTable, gameRule);
 
 		//進行役へプレイヤーを登録
 		//村田を認識
-		master.registerPlayer(murata);
+		gameMaster.registerPlayer(playerMurata);
 		//山田を認識
-		master.registerPlayer(yamada);
+		gameMaster.registerPlayer(playerYamada);
 		//齋藤を認識
-		master.registerPlayer(saito);
+		gameMaster.registerPlayer(playerSaito);
 		
-		//
-		Hand trump = createTrump();
+		//トランプを生成
+		Hand gameTrump = createTrump();
 		
-		//
-		master.prepareGame(trump);
+		//ゲームの準備をする
+		gameMaster.prepareGame(gameTrump);
 		
-		//
-		master.startGame();
+		//ゲームを開始する
+		gameMaster.startGame();
 	}
 
 }

@@ -13,6 +13,9 @@ public class Master {
 
 	//参加したプレイヤーを保持するためのリスト
 	private ArrayList<Player> playersList = new ArrayList<>();
+	
+	//プレーヤーの最小人数を定数化
+	static final int MINIMUM_PLAYER_COUNT = 1;
 
 	/*
 	 * 関数名：prepareGame
@@ -64,7 +67,7 @@ public class Master {
 		System.out.println("【ゲームを開始します】");
 
 		//プレイヤーの人数を取得する
-		for (int count = 0; playersList.size() > 1; count++) {
+		for (int count = 0; playersList.size() > MINIMUM_PLAYER_COUNT; count++) {
 
 			//プレイヤーを進行順序を確認
 			int playerIndex = count % playersList.size();
@@ -98,7 +101,7 @@ public class Master {
 	public void declareWin(Player gameWinner) {
 
 		//上がったプレイヤーを伝える
-		System.out.println(gameWinner + "さんが上がりました!");
+		System.out.println(" " + gameWinner + "さんが上がりました!");
 
 		//上がったプレイヤーをゲームから除外
 		deregisterPlayer(gameWinner);
@@ -132,7 +135,7 @@ public class Master {
 		playersList.remove(playersList.indexOf(leavedPlayer));
 		
 		//残り一人になった場合
-		if (playersList.size() == 1) {
+		if (playersList.size() == MINIMUM_PLAYER_COUNT) {
 			
 			//敗者が決定する
 			Player gameLoser = (Player) playersList.get(0);

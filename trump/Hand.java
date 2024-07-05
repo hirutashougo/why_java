@@ -82,6 +82,9 @@ public class Hand {
 	 * 作成日：2024/07/02
 	*/
 	public void shuffleCards() {
+		
+		//カードを混ぜる度合いを定数化
+		final int SHUFFLE_DEGREE = 2;
 
 		//手札の数を取得
 		int handNumber = playerHand.size();
@@ -89,8 +92,8 @@ public class Hand {
 		//カードを引き出す位置を設定
 		int pullPosition;
 
-		//
-		for (int pullCount = 0; pullCount < handNumber * 2; pullCount++) {
+		//手札をシャッフルする
+		for (int pullCount = 0; pullCount < handNumber * SHUFFLE_DEGREE; pullCount++) {
 
 			//カードを抜き取る位置をランダムに決定
 			pullPosition = (int) (Math.random() * handNumber);

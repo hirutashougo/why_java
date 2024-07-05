@@ -1,9 +1,13 @@
 package oldMaidRemake;
 
+
 //trumpパッケージのCardクラスをインポート
 import trump.Card;
+//trumpパッケージのHandクラスをインポート
 import trump.Hand;
+//trumpパッケージのRuleクラスをインポート
 import trump.Rule;
+//trumpパッケージのTableクラスをインポート
 import trump.Table;
 
 public class OldMaidRule implements Rule {
@@ -17,61 +21,49 @@ public class OldMaidRule implements Rule {
 	 * 作成日：2024/07/02
 	*/
 	public Card[] findCandidate(Hand gameHand, Table gameTable) {
+		
+		//テーブルへ捨てるカードの枚数を定数化
+		final int CANDIDATE_CARD_COUNT = 2;
 
 		//手札の枚数を確認
 		int numberOfHand = gameHand.getNumberOfCards();
 
-		//テーブルに置ける、数字が等しいカードの組み合わせの変数を宣言
+		//テーブルに置くことのできるカードの組み合わせの変数を宣言
 		Card[] candidateCard = null;
 
-		//手札の数字を一度全て覚えておくための配列を宣言
-		int[] handNumbers = new int[numberOfHand];
-
-		//手札の数字を覚えていく
-		for (int handOrder = 0; handOrder < numberOfHand; handOrder++) {
+		//手札のカードの回数分繰り返す処理
+		OuterRoop: for (int handOrder = 0; handOrder < numberOfHand; handOrder++) {
 
 			//手元のカードを確認
 			Card lookingCard = gameHand.lookCard(handOrder);
-			//手元のカードの数字を確認
-			int cardNumber = lookingCard.getNumber();
-			//数字を覚える
-			handNumbers[handOrder] = cardNumber;
-		}
 
-		//同じ数字がないか、順番に確かめる
-		for (int handOrder = 0; handOrder < numberOfHand; handOrder++) {
-
-			//手元のカードを確認
-			Card lookingCard = gameHand.lookCard(handOrder);
-			//手元のカードの数字を確認
-			int firstNumber = lookingCard.getNumber();
-			
-			//取り上げたカードと同じ数字がないか確かめていく
+			//同じ数字のカードがないか探す
 			for (int checkOrder = 0; checkOrder < numberOfHand; checkOrder++) {
-				
-				//比べるカードの数字を確認
-				int secondNumber = lookingCard.getNumber();
-				
-				//別々のカードを比べていて、それらが同じ数字の場合
-				if(checkOrder == handOrder && firstNumber == secondNumber) {
-					
-					//テーブルに置けるカードの組であると判断
-					candidateCard = new Card[2];
-					//最初のカードを確認
+
+				//手元のカードを確認
+				Card checkingCard = gameHand.lookCard(checkOrder);
+
+				//対象のカードの数字を確認
+				int handNumber = lookingCard.getNumber();
+				//比較するカードの数字を確認
+				int checkingNumber = checkingCard.getNumber();
+
+				//異なる手札を比較して、カードの数字が同じ場合
+				if (handOrder != checkOrder && handNumber == checkingNumber) {
+
+					//捨てられるカードがあると判断
+					candidateCard = new Card[CANDIDATE_CARD_COUNT];
+					//テーブルに置けるカードを確認
 					candidateCard[0] = gameHand.pickCard(handOrder);
-					//次のカードを確認
-					candidateCard[1] = gameHand.pickCard(checkOrder);
-					
-					//同じカードを比べてしまっている場合
-				} else {
-					
-					//比べない
-					break;
+					//テーブルに置けるカードを確認
+					candidateCard[1] = gameHand.pickCard(checkOrder - 1);
+					//処理を抜ける
+					break OuterRoop;
 				}
 			}
 		}
 
-		//数字が同じのカードの組み合わせを返却
+		//同じ数字の組み合わせを返却
 		return candidateCard;
 	}
 }
