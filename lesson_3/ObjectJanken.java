@@ -1,11 +1,5 @@
 package lesson_3;
 
-//jankenパッケージのJudgeクラスをインポート
-import janken.Judge;
-//jankenパッケージのPlayerクラスをインポート
-import janken.Player;
-
-
 /*
  * クラス名:ObjectJanken
  * 概要:オブジェクト指向によるジャンケンプログラム
