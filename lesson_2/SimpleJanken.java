@@ -1,5 +1,8 @@
 package lesson_2;
 
+//乱数生成のためのクラスをインポート
+import java.util.Random;
+
 /*
  * クラス名:SimpleJanken
  * 概要:オブジェクト指向を使用しないジャンケンプログラム
@@ -15,18 +18,14 @@ public class SimpleJanken {
 	public static final int SCISSORS_NUMBER = 1;
 	//パーを表す定数を定義
 	public static final int PAPER_NUMBER = 2;
-	//ジャンケンの手を決める乱数の範囲を定数化
-	public static final int JANKEN_RANGE = 3;
-	//生成される乱数の中で1番目の区切りとなる数値を定数化
-	public static final int FIRST_RANDOM_MNUMBER = 1;
-	//生成される乱数の中で2番目の区切りとなる数値を定数化
-	public static final int SECOND_RANDOM_MNUMBER = 2;
-	//生成される乱数の中で3番目の区切りとなる数値を定数化
-	public static final int THIRD_RANDOM_MNUMBER = 3;
 	//対戦回数を表す定数を定義
 	public static final int GAME_COUNT = 3;
 	//対戦回数の表示を調整するための定数を宣言
 	public static final int GAME_COUNT_ADJUSTMENT = 1;
+	//ジャンケンの手の種類の数を定数化
+	public static final int JANKEN_TYPE_COUNT = 3;
+	//ジャンケンの手を決める乱数の範囲を調整する定数を宣言
+	public static final int JANKEN_TYPE_COUNT_ADJUSTMENT = -1;
 
 	/*
 	 * 関数名：main
@@ -56,70 +55,73 @@ public class SimpleJanken {
 			//対戦回数の表示と対戦開始の宣言
 			System.out.print("【" + (count + GAME_COUNT_ADJUSTMENT) + "回戦目】\n");
 
-			//乱数を格納するための定数を定義
-			double randomNumber = 0;
+			//乱数生成クラスの変数を宣言
+			Random randomNumber = new Random();
 
-			//プレイヤー1が何を出すか決定する
-			//プレイヤー1の手を格納する変数を定義
+			//プレイヤーの手を格納する変数を定義
 			int firstPlayerHand = 0;
 
-			//0以上3未満の少数として乱数を得る
-			randomNumber = Math.random() * JANKEN_RANGE;
+			//乱数を格納するための定数を定義
+			double firstJankenNumber = 0;
+
+			//0以上2未満の少数として乱数を得る
+			firstJankenNumber = randomNumber.nextInt(JANKEN_TYPE_COUNT + JANKEN_TYPE_COUNT_ADJUSTMENT);
 
 			//生成された乱数が1未満の場合
-			if (randomNumber < FIRST_RANDOM_MNUMBER) {
+			if (firstJankenNumber == STONE_NUMBER) {
 				//グーを選択
 				firstPlayerHand = STONE_NUMBER;
-				//プレイヤー1の手を表示する
+				//プレイヤーの手を表示する
 				System.out.print("グー");
 
 				//生成された乱数が(1以上)2未満の場合
-			} else if (randomNumber < SECOND_RANDOM_MNUMBER) {
+			} else if (firstJankenNumber == SCISSORS_NUMBER) {
 				//チョキを選択
 				firstPlayerHand = SCISSORS_NUMBER;
-				//プレイヤー1の手を表示する
+				//プレイヤーの手を表示する
 				System.out.print("チョキ");
 
 				//生成された乱数が(2以上)3未満の場合
-			} else if (randomNumber < THIRD_RANDOM_MNUMBER) {
+			} else if (firstJankenNumber == PAPER_NUMBER) {
 				//パーを選択
 				firstPlayerHand = PAPER_NUMBER;
-				//プレイヤー1の手を表示する
+				//プレイヤーの手を表示する
 				System.out.print("パー");
 			}
 
 			//vsと表示
 			System.out.print("vs.");
 
-			//プレイヤー2が何を出すか決める
-			//プレイヤー2の手を格納する変数を定義
+			//プレイヤーの手を格納する変数を定義
 			int secondPlayerHand = 0;
 
-			//0以上3未満の少数として乱数を得る
-			randomNumber = Math.random() * JANKEN_RANGE;
+			//乱数を格納するための定数を定義
+			double secondjankenNumber = 0;
+
+			//0以上2未満の少数として乱数を得る
+			secondjankenNumber = randomNumber.nextInt(JANKEN_TYPE_COUNT + JANKEN_TYPE_COUNT_ADJUSTMENT);
 
 			//生成された乱数が1未満の場合
-			if (randomNumber < FIRST_RANDOM_MNUMBER) {
+			if (secondjankenNumber == STONE_NUMBER) {
 				//グーを選択
 				secondPlayerHand = STONE_NUMBER;
-				//プレイヤー2の手を表示する
+				//プレイヤーの手を表示する
 				System.out.print("グー");
 
 				//生成された乱数が(1以上)2未満の場合
-			} else if (randomNumber < SECOND_RANDOM_MNUMBER) {
+			} else if (secondjankenNumber == SCISSORS_NUMBER) {
 				//チョキを選択
 				secondPlayerHand = SCISSORS_NUMBER;
-				//プレイヤー2の手を表示する
+				//プレイヤーの手を表示する
 				System.out.print("チョキ");
 
 				//生成された乱数が(2以上)3未満の場合
-			} else if (randomNumber < THIRD_RANDOM_MNUMBER) {
+			} else if (secondjankenNumber == PAPER_NUMBER) {
 				//パーを選択
 				secondPlayerHand = PAPER_NUMBER;
-				//プレイヤー2の手を表示する
+				//プレイヤーの手を表示する
 				System.out.print("パー");
 			}
-
 			//どちらが勝ちかを判定し、結果を表示する
 			//プレイヤー1が勝つ場合
 			if ((firstPlayerHand == STONE_NUMBER && secondPlayerHand == SCISSORS_NUMBER)

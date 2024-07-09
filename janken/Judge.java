@@ -8,21 +8,16 @@ package janken;
  */
 public class Judge {
 
-	//ジャンケンの手を表す定数を宣言
 	//グーを表す定数を定義
 	public static final int STONE_NUMBER = 0;
 	//チョキを表す定数を定義
 	public static final int SCISSORS_NUMBER = 1;
 	//パーを表す定数を定義
 	public static final int PAPER_NUMBER = 2;
-	//ジャンケンの手を決める乱数の範囲を定数化
+	//ジャンケンの手種類の数を定数化
 	public static final int JANKEN_RANGE = 3;
-	//生成される乱数の中で1番目の区切りとなる数値を定数化
-	public static final int FIRST_RANDOM_MNUMBER = 1;
-	//生成される乱数の中で2番目の区切りとなる数値を定数化
-	public static final int SECOND_RANDOM_MNUMBER = 2;
-	//生成される乱数の中で3番目の区切りとなる数値を定数化
-	public static final int THIRD_RANDOM_MNUMBER = 3;
+	//対戦回数を表す定数を定義
+	public static final int GAME_COUNT = 3;
 	//対戦回数の表示を調整するための定数を宣言
 	public static final int GAME_COUNT_ADJUSTMENT = 1;
 
@@ -40,10 +35,10 @@ public class Judge {
 		System.out.println("【ジャンケン開始】\n");
 
 		//ジャンケンを三回行う
-		for (int count = 0; count < 3; count++) {
+		for (int count = 0; count < GAME_COUNT; count++) {
 
 			//何回戦目か表示する
-			System.out.println("【" + (count + 1) + "回戦目】");
+			System.out.println("【" + (count + GAME_COUNT_ADJUSTMENT) + "回戦目】");
 
 			//プレイヤーの手を見て、どちらが勝ちか判定する
 			Player jankenWinner = judgeJanken(firstPlayer, secondPlayer);
@@ -74,7 +69,7 @@ public class Judge {
 		//結果の表示
 		System.out.println(firstPlayer.getWinCount() + "対" + secondPlayer.getWinCount() + "で");
 
-		//
+		//勝敗がついている場合
 		if (finalWinner != null) {
 			//最終的な勝者を表示
 			System.out.print(finalWinner.getName() + "の勝ちです!\n");
@@ -151,10 +146,10 @@ public class Judge {
 		//総合勝者を表す変数を宣言
 		Player jankenWinner = null;
 
-		//プレイヤー1から勝ちを聞く
+		//プレイヤー1の勝利数を取得
 		int firstPlayerWinCount = firstPlayer.getWinCount();
 
-		//プレイヤー2から勝ちを聞く
+		//プレイヤー2の勝利数を取得
 		int secondPlayerWinCount = secondPlayer.getWinCount();
 
 		//プレイヤー1が多く勝った場合
