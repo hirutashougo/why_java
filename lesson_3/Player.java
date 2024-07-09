@@ -67,22 +67,16 @@ public class Player {
 		if (jankenNumber == STONE_NUMBER) {
 			//グーを選択
 			playerHand = STONE_NUMBER;
-			//プレイヤーの手を表示する
-			System.out.print("グー");
 
 			//生成された乱数が(1以上)2未満の場合
 		} else if (jankenNumber == SCISSORS_NUMBER) {
 			//チョキを選択
 			playerHand = SCISSORS_NUMBER;
-			//プレイヤーの手を表示する
-			System.out.print("チョキ");
 
 			//生成された乱数が(2以上)3未満の場合
 		} else if (jankenNumber == PAPER_NUMBER) {
 			//パーを選択
 			playerHand = PAPER_NUMBER;
-			//プレイヤーの手を表示する
-			System.out.print("パー");
 		}
 
 		//ジャンケンの手を返却
