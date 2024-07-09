@@ -23,6 +23,8 @@ public class SimpleJanken {
 	public static final int SECOND_RANDOM_MNUMBER = 2;
 	//生成される乱数の中で3番目の区切りとなる数値を定数化
 	public static final int THIRD_RANDOM_MNUMBER = 3;
+	//対戦回数を表す定数を定義
+	public static final int GAME_COUNT = 3;
 	//対戦回数の表示を調整するための定数を宣言
 	public static final int GAME_COUNT_ADJUSTMENT = 1;
 
@@ -49,8 +51,8 @@ public class SimpleJanken {
 		//ジャンケンを3回実施する
 		//勝負した回数を加算する
 		//3回勝負が終わったか?
-		for (int count = 0; count < 3; count++) {
-			
+		for (int count = 0; count < GAME_COUNT; count++) {
+
 			//対戦回数の表示と対戦開始の宣言
 			System.out.print("【" + (count + GAME_COUNT_ADJUSTMENT) + "回戦目】\n");
 
@@ -71,21 +73,21 @@ public class SimpleJanken {
 				//プレイヤー1の手を表示する
 				System.out.print("グー");
 
-			//生成された乱数が(1以上)2未満の場合
+				//生成された乱数が(1以上)2未満の場合
 			} else if (randomNumber < SECOND_RANDOM_MNUMBER) {
 				//チョキを選択
 				firstPlayerHand = SCISSORS_NUMBER;
 				//プレイヤー1の手を表示する
 				System.out.print("チョキ");
 
-			//生成された乱数が(2以上)3未満の場合
+				//生成された乱数が(2以上)3未満の場合
 			} else if (randomNumber < THIRD_RANDOM_MNUMBER) {
 				//パーを選択
 				firstPlayerHand = PAPER_NUMBER;
 				//プレイヤー1の手を表示する
 				System.out.print("パー");
 			}
-			
+
 			//vsと表示
 			System.out.print("vs.");
 
@@ -103,14 +105,14 @@ public class SimpleJanken {
 				//プレイヤー2の手を表示する
 				System.out.print("グー");
 
-			//生成された乱数が(1以上)2未満の場合
+				//生成された乱数が(1以上)2未満の場合
 			} else if (randomNumber < SECOND_RANDOM_MNUMBER) {
 				//チョキを選択
 				secondPlayerHand = SCISSORS_NUMBER;
 				//プレイヤー2の手を表示する
 				System.out.print("チョキ");
 
-			//生成された乱数が(2以上)3未満の場合
+				//生成された乱数が(2以上)3未満の場合
 			} else if (randomNumber < THIRD_RANDOM_MNUMBER) {
 				//パーを選択
 				secondPlayerHand = PAPER_NUMBER;
