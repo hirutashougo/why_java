@@ -16,7 +16,7 @@ public class ObjectJanken {
 	
 	/*
      * 関数名:main
-     * 概要:オブジェクト指向によるジャンケンプログラム
+     * 概要:ジャンケンを行う
      * 引数:なし
      * 戻り値:なし
      * 作成者:S.Hiruta
@@ -27,10 +27,10 @@ public class ObjectJanken {
 		//審判(齋藤さん)のインスタンス生成
 		Judge judgmentSaito = new Judge();
 		
-		//プレイヤー1(村田さん)の生成
+		//最初プレイヤー(村田さん)の生成
 		Player playerMurata = new Murata("村田さん");
 		
-		//プレイヤー2(山田さん)の生成
+		//次のプレイヤー(山田さん)の生成
 		Player playerYamada = new Yamada("山田さん");
 		
 		//村田さんと山田さんをプレイヤーとしてジャンケンを開始する

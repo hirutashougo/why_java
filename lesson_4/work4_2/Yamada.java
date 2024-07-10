@@ -23,11 +23,9 @@ public class Yamada extends Player {
 		super(inputName);
 	}
 
-	//プレイヤークラスの操作
-
 	/*
 	 * 関数名：showHand
-	 * 概要:ジャンケンの手を決める
+	 * 概要:ジャンケンの手を決める(パーしか出さない)
 	 * 引数：なし
 	 * 戻り値：ジャンケンの手
 	 * 作成者：S.Hiruta
@@ -35,7 +33,6 @@ public class Yamada extends Player {
 	*/
 	public int showHand() {
 
-		//プレイヤーが何を出すか決定する
 		//プレイヤーの手を格納する変数を定義
 		int playerHand = 0;
 

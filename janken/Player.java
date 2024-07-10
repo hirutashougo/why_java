@@ -21,6 +21,8 @@ public class Player {
 	public static final int JANKEN_TYPE_COUNT = 3;
 	//ジャンケンの手を決める乱数の範囲を調整する定数を宣言
 	public static final int JANKEN_TYPE_COUNT_ADJUSTMENT = -1;
+	//ジャンケンの勝利数を加算する際に用いる定数を宣言
+	public static final int ADD_WIN_COUNT = 1;
 
 	//プレイヤーの名前
 	private String playerNamea = "";
@@ -63,21 +65,21 @@ public class Player {
 		//0以上2未満の少数として乱数を得る
 		jankenNumber = randomNumber.nextInt(JANKEN_TYPE_COUNT + JANKEN_TYPE_COUNT_ADJUSTMENT);
 
-		//生成された乱数が1未満の場合
+		//生成された乱数が0の場合
 		if (jankenNumber == STONE_NUMBER) {
 			//グーを選択
 			playerHand = STONE_NUMBER;
 			//プレイヤーの手を表示する
 			System.out.print("グー");
 
-			//生成された乱数が(1以上)2未満の場合
+			//生成された乱数が1の場合
 		} else if (jankenNumber == SCISSORS_NUMBER) {
 			//チョキを選択
 			playerHand = SCISSORS_NUMBER;
 			//プレイヤーの手を表示する
 			System.out.print("チョキ");
 
-			//生成された乱数が(2以上)3未満の場合
+			//生成された乱数が2の場合
 		} else if (jankenNumber == PAPER_NUMBER) {
 			//パーを選択
 			playerHand = PAPER_NUMBER;
@@ -103,7 +105,7 @@ public class Player {
 		//ジャンケンに勝った場合
 		if (gameResult == true) {
 			//勝った回数を1加算する
-			winCount += 1;
+			winCount += ADD_WIN_COUNT;
 		}
 	}
 

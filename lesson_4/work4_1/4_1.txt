@@ -1,6 +1,7 @@
-出力結果：
+エラー画面の内容：
 
 Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
 	型 Judge のメソッド startJanken(Player, Player) は引数 (Murata, Yamada) に適用できません
 
 	at lesson_4.work4_1.ObjectJanken.main(ObjectJanken.java:35)
+

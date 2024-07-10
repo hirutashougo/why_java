@@ -24,7 +24,7 @@ public class ObjectJanken {
 		//最初プレイヤー(村田さん)の生成
 		Player playerMurata = new Player("村田さん");
 		
-		//次プレイヤー(山田さん)の生成
+		//次のプレイヤー(山田さん)の生成
 		Player playerYamada = new Player("山田さん");
 		
 		//村田さんと山田さんをプレイヤーとしてジャンケンを開始する

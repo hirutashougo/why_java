@@ -1,11 +1,15 @@
 package lesson_5;
 
-import jankenWithInterface.AskTactics;
-//jankenWithInterfaceパッケージのJudgeクラスをインポート
-import jankenWithInterface.Judge;
-import jankenWithInterface.Player;
-import jankenWithInterface.RandomTactics;
-import jankenWithInterface.Tactics;
+//lesson_5.jankenパッケージのAskTacticsクラスをインポート
+import lesson_5.janken.AskTactics;
+//lesson_5.jankenパッケージのJudgeクラスをインポート
+import lesson_5.janken.Judge;
+//lesson_5.jankenパッケージのPlayerクラスをインポート
+import lesson_5.janken.Player;
+//lesson_5.jankenパッケージのRandomTacticsクラスをインポート
+import lesson_5.janken.RandomTactics;
+//lesson_5.jankenパッケージのTacticsインタフェースをインポート
+import lesson_5.janken.Tactics;
 
 /*
  * クラス名:ObjectJanken
@@ -13,7 +17,7 @@ import jankenWithInterface.Tactics;
  * 作成者:S.Hiruta
  * 作成日:2024/07/01
  */
-public class ObjectJanken {
+public class ObjectJanken_sample {
 
 	/*
 	 * 関数名:main
