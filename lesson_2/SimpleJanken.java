@@ -64,24 +64,24 @@ public class SimpleJanken {
 			//乱数を格納するための定数を定義
 			double firstJankenNumber = 0;
 
-			//0以上2未満の少数として乱数を得る
+			//0以上2未満の整数として乱数を得る
 			firstJankenNumber = randomNumber.nextInt(JANKEN_TYPE_COUNT + JANKEN_TYPE_COUNT_ADJUSTMENT);
 
-			//生成された乱数が1未満の場合
+			//生成された乱数が0の場合
 			if (firstJankenNumber == STONE_NUMBER) {
 				//グーを選択
 				firstPlayerHand = STONE_NUMBER;
 				//プレイヤーの手を表示する
 				System.out.print("グー");
 
-				//生成された乱数が(1以上)2未満の場合
+				//生成された乱数が1の場合
 			} else if (firstJankenNumber == SCISSORS_NUMBER) {
 				//チョキを選択
 				firstPlayerHand = SCISSORS_NUMBER;
 				//プレイヤーの手を表示する
 				System.out.print("チョキ");
 
-				//生成された乱数が(2以上)3未満の場合
+				//生成された乱数が2の場合
 			} else if (firstJankenNumber == PAPER_NUMBER) {
 				//パーを選択
 				firstPlayerHand = PAPER_NUMBER;

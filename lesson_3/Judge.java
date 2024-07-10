@@ -34,7 +34,7 @@ public class Judge {
 		//ジャンケンの開始を宣言する
 		System.out.println("【ジャンケン開始】\n");
 
-		//ジャンケンを三回行う
+		//ジャンケンを指定回数分、行う
 		for (int count = 0; count < GAME_COUNT; count++) {
 
 			//何回戦目か表示する
@@ -43,7 +43,7 @@ public class Judge {
 			//プレイヤーの手を見て、どちらが勝ちか判定する
 			Player jankenWinner = judgeJanken(firstPlayer, secondPlayer);
 
-			//ジャンケンが行われた場合
+			//ジャンケンの勝ち負けが決まっている場合
 			if (jankenWinner != null) {
 
 				//勝者を表示する
@@ -54,7 +54,7 @@ public class Judge {
 
 				//引き分けの場合
 			} else {
-				//引き分けの場合
+				//引き分けと表示
 				System.out.println("\n引き分けです!\n");
 			}
 
@@ -69,7 +69,7 @@ public class Judge {
 		//結果の表示
 		System.out.println(firstPlayer.getWinCount() + "対" + secondPlayer.getWinCount() + "で");
 
-		//勝敗がついている場合
+		//勝ち負けがついている場合
 		if (finalWinner != null) {
 			//最終的な勝者を表示
 			System.out.print(finalWinner.getName() + "の勝ちです!\n");
@@ -85,8 +85,8 @@ public class Judge {
 	/*
 	 * 関数名：judgeJanken
 	 * 概要:二人のジャンケンの勝敗を決める
-	 * 引数：二人のプレイヤー(Player型)
-	 * 戻り値：勝ったほうのプレイヤー(Player型)
+	 * 引数：対戦するプレイヤー(Player型)
+	 * 戻り値：勝ったほうのプレイヤー(どちらでもない場合はnull)(Player型)
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/06/28
 	*/
@@ -95,41 +95,41 @@ public class Judge {
 		//勝者を表す変数を定義
 		Player winner = null;
 
-		//プレイヤー1の手を出す
+		//最初のプレイヤーの手を出す
 		int firstPlayerHand = firstPlayer.showHand();
 
-		//プレイヤー2の手を出す
+		//次のプレイヤーの手を出す
 		int secondPlayerHand = secondPlayer.showHand();
 
 		//それぞれの手を表示する
-		//プレイヤー1の手を表示
+		//最初のプレイヤーの手を表示
 		printHand(firstPlayerHand);
 		//vsと表示する
 		System.out.print("vs.");
-		//プレイヤー1の手を表示
+		//次のプレイヤーの手を表示
 		printHand(secondPlayerHand);
 		//改行する
 		System.out.print("\n");
 
-		//プレイヤー1が勝つ場合
+		//最初のプレイヤーが勝つ場合
 		if ((firstPlayerHand == STONE_NUMBER && secondPlayerHand == SCISSORS_NUMBER)
 				|| (firstPlayerHand == SCISSORS_NUMBER && secondPlayerHand == PAPER_NUMBER)
 				|| (firstPlayerHand == PAPER_NUMBER && secondPlayerHand == STONE_NUMBER)) {
 
-			//プレイヤー1が勝者
+			//最初のプレイヤーが勝者
 			winner = firstPlayer;
 		}
 
-		//プレイヤー2が勝つ場合
+		//次のプレイヤーが勝つ場合
 		if ((secondPlayerHand == STONE_NUMBER && firstPlayerHand == SCISSORS_NUMBER)
 				|| (secondPlayerHand == SCISSORS_NUMBER && firstPlayerHand == PAPER_NUMBER)
 				|| (secondPlayerHand == PAPER_NUMBER && firstPlayerHand == STONE_NUMBER)) {
 
-			//プレイヤー2が勝者
+			//次のプレイヤーが勝者
 			winner = secondPlayer;
 		}
 
-		//どちらでもない場合は引き分け(nullを返す)
+		//ジャンケンの勝者を返却(どちらでもない場合はnullを返す)
 		return winner;
 	}
 
@@ -140,28 +140,28 @@ public class Judge {
 	 * 戻り値：勝ったほうのプレイヤー(Player型)
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/06/28
-	*/
+	 */
 	public Player judgeFinalWinner(Player firstPlayer, Player secondPlayer) {
 
 		//総合勝者を表す変数を宣言
 		Player jankenWinner = null;
 
-		//プレイヤー1の勝利数を取得
+		//最初のプレイヤーの勝利数を取得
 		int firstPlayerWinCount = firstPlayer.getWinCount();
 
-		//プレイヤー2の勝利数を取得
+		//次のプレイヤーの勝利数を取得
 		int secondPlayerWinCount = secondPlayer.getWinCount();
 
-		//プレイヤー1が多く勝った場合
+		//最初のプレイヤーが多く勝った場合
 		if (firstPlayerWinCount > secondPlayerWinCount) {
 
-			//プレイヤー1が勝者
+			//最初のプレイヤーが勝者
 			jankenWinner = firstPlayer;
 
-			//プレイヤー2が多く勝った場合
+			//次のプレイヤーが多く勝った場合
 		} else if (firstPlayerWinCount < secondPlayerWinCount) {
 
-			//プレイヤー2が勝者
+			//次のプレイヤーが勝者
 			jankenWinner = secondPlayer;
 		}
 

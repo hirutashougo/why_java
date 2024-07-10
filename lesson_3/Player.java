@@ -21,10 +21,12 @@ public class Player {
 	public static final int JANKEN_TYPE_COUNT = 3;
 	//ジャンケンの手を決める乱数の範囲を調整する定数を宣言
 	public static final int JANKEN_TYPE_COUNT_ADJUSTMENT = -1;
+	//ジャンケンの勝利数を加算する際に用いる定数を宣言
+	public static final int ADD_WIN_COUNT = 1;
 
-	//プレイヤーの名前
+	//プレイヤーの名前のフィールドを宣言
 	private String playerNamea = "";
-	//プレイヤーの勝った回数
+	//プレイヤーの勝った回数を表すフィールドを宣言
 	private int winCount = 0;
 
 	/*
@@ -38,8 +40,6 @@ public class Player {
 		//ジャンケンプレイヤーの名前を入力値で初期化
 		playerNamea = inputName;
 	}
-
-	//プレイヤークラスの操作
 
 	/*
 	 * 関数名：showHand
@@ -60,20 +60,20 @@ public class Player {
 		//乱数を格納するための定数を定義
 		double jankenNumber = 0;
 
-		//0以上2未満の少数として乱数を得る
+		//0以上2未満の整数として乱数を得る
 		jankenNumber = randomNumber.nextInt(JANKEN_TYPE_COUNT + JANKEN_TYPE_COUNT_ADJUSTMENT);
 
-		//生成された乱数が1未満の場合
+		//生成された乱数が0の場合
 		if (jankenNumber == STONE_NUMBER) {
 			//グーを選択
 			playerHand = STONE_NUMBER;
 
-			//生成された乱数が(1以上)2未満の場合
+			//生成された乱数が1の場合
 		} else if (jankenNumber == SCISSORS_NUMBER) {
 			//チョキを選択
 			playerHand = SCISSORS_NUMBER;
 
-			//生成された乱数が(2以上)3未満の場合
+			//生成された乱数が2の場合
 		} else if (jankenNumber == PAPER_NUMBER) {
 			//パーを選択
 			playerHand = PAPER_NUMBER;
@@ -87,7 +87,7 @@ public class Player {
 	/*
 	 * 関数名：notifyResult
 	 * 概要:審判から勝敗を聞く(ジャンケンの勝った回数を加算する)
-	 * 引数：ジャンケンの勝ち負け(boolean型)
+	 * 引数：ジャンケンの勝敗結果(boolean型)
 	 * 戻り値：なし
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/06/28
@@ -96,8 +96,8 @@ public class Player {
 
 		//ジャンケンに勝った場合
 		if (gameResult == true) {
-			//勝った回数を1加算する
-			winCount += 1;
+			//勝った回数を加算する
+			winCount += ADD_WIN_COUNT;
 		}
 	}
 
@@ -111,13 +111,13 @@ public class Player {
 	*/
 	public int getWinCount() {
 
-		//勝った回数
+		//勝利回数を返却
 		return winCount;
 	}
 
 	/*
 	 * 関数名：getName
-	 * 概要:プレイヤーの名前を返却する
+	 * 概要:プレイヤーの名前を取得する
 	 * 引数：なし
 	 * 戻り値：ジャンケンプレイヤーの名前(int型)
 	 * 作成者：S.Hiruta
@@ -125,7 +125,7 @@ public class Player {
 	*/
 	public String getName() {
 
-		//勝った回数
+		//プレイヤーの名前を返却
 		return playerNamea;
 	}
 
