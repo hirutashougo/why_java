@@ -2,7 +2,7 @@ package lesson_5.janken;
 
 /*
  * クラス名:CycleTactics
- * 概要:標準入力によりグー・チョキ・パーの順に手を出す戦略クラス
+ * 概要:グー・チョキ・パーの順に手を出す戦略クラス
  * 作成者:S.Hiruta
  * 作成日:2024/07/01
  */
@@ -25,11 +25,11 @@ public class CycleTactics implements Tactics {
 	public static final int INITIAL_GAME_COUNT = 1;
 
 	//ジャンケンが行われた試合数を表す変数を宣言
-	private int gameCount = INITIAL_GAME_COUNT;
+	private  int gameCount = INITIAL_GAME_COUNT;
 
 	/*
 	 * 関数名：readTactis
-	 * 概要:
+	 * 概要:グー・チョキ・パーの順に手を出す戦略クラス
 	 * 引数：なし
 	 * 戻り値：ジャンケンの手を表す数字(int型)
 	 * 作成者：S.Hiruta

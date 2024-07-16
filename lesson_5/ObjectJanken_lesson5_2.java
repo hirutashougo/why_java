@@ -21,7 +21,7 @@ public class ObjectJanken_lesson5_2 {
 
 	/*
 	 * 関数名:main
-	 * 概要:ジャンケンをする
+	 * 概要:戦略インタフェースに対応したジャンケンプログラム
 	 * 引数:なし
 	 * 戻り値:なし
 	 * 作成者:S.Hiruta

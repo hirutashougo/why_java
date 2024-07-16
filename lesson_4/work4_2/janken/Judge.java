@@ -67,7 +67,7 @@ public class Judge {
 		Player finalWinner = judgeFinalWinner(firstPlayer, secondPlayer);
 
 		//結果の表示
-		System.out.println(firstPlayer.getWinCount() + "対" + secondPlayer.getWinCount() + "で");
+		System.out.print(firstPlayer.getWinCount() + " 対 " + secondPlayer.getWinCount() + "で");
 
 		//勝敗がついている場合
 		if (finalWinner != null) {
@@ -105,7 +105,7 @@ public class Judge {
 		//プレイヤー1の手を表示
 		printHand(firstPlayerHand);
 		//vsと表示する
-		System.out.print("vs.");
+		System.out.print(" vs. ");
 		//プレイヤー1の手を表示
 		printHand(secondPlayerHand);
 		//改行する
