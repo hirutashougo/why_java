@@ -1,9 +1,9 @@
 package lesson_4.work4_2;
 
-//jankenパッケージのJudgeクラスをインポート
-import janken.Judge;
-//jankenパッケージのPlayerクラスをインポート
-import janken.Player;
+//lesson_4.work4_2.jankenパッケージのJudgeクラスをインポート
+import lesson_4.work4_2.janken.Judge;
+//lesson_4.work4_2.jankenパッケージのPlayerクラスをインポート
+import lesson_4.work4_2.janken.Player;
 
 
 /*

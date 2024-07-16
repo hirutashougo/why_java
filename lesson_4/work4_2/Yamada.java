@@ -1,7 +1,7 @@
 package lesson_4.work4_2;
 
-//jankenパッケージのPlayerクラスをインポート
-import janken.Player;
+//lesson_4.work4_2.jankenパッケージのPlayerクラスをインポート
+import lesson_4.work4_2.janken.Player;
 
 /*
  * クラス名:Yamada
@@ -38,8 +38,6 @@ public class Yamada extends Player {
 
 		//パーを選択
 		playerHand = PAPER_NUMBER;
-		//プレイヤーの手を表示する
-		System.out.print("パー");
 
 		//ジャンケンの手を返却
 		return playerHand;

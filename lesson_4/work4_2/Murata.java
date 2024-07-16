@@ -1,7 +1,7 @@
 package lesson_4.work4_2;
 
-//jankenパッケージのPlayerクラスをインポート
-import janken.Player;
+//lesson_4.work4_2.jankenパッケージのPlayerクラスをインポート
+import lesson_4.work4_2.janken.Player;
 
 /*
  * クラス名:Murata
@@ -38,8 +38,6 @@ public class Murata extends Player{
 
 		//グーを選択
 		playerHand = STONE_NUMBER;
-		//プレイヤーの手を表示する
-		System.out.print("グー");
 
 		//ジャンケンの手を返却
 		return playerHand;

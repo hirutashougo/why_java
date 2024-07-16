@@ -25,7 +25,7 @@ public class CycleTactics implements Tactics {
 	public static final int INITIAL_GAME_COUNT = 1;
 
 	//ジャンケンが行われた試合数を表す変数を宣言
-	static int gameCount = INITIAL_GAME_COUNT;
+	private int gameCount = INITIAL_GAME_COUNT;
 
 	/*
 	 * 関数名：readTactis
