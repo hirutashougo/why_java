@@ -14,37 +14,42 @@ import oldMaid.Table;
  */
 public class OldMaid {
 	
+	//トランプの数字の最大値を表す定数を定義
+	public static final int TRUMP_MUXIMUM_NUMBER = 13;
+	//トランプの数字の最小数を表す定数を定義
+	public static final int TRUMP_MINIMUM_NUMBER = 1;
+	
 	/*
-	 * 関数名：main
-	 * 概要:ババ抜きを行うクラス
+	 * 関数名：createTrump
+	 * 概要:トランプの手を作る
 	 * 引数：なし
-	 * 戻り値：なし
+	 * 戻り値：トランプの手札(Card型)
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
 	private static Hand createTrump() {
 		
-		//
-		Hand trump = new Hand();
+		//トランプの手を格納する変数を定義
+		Hand trumpHand = new Hand();
 		
-		//
-		for(int number = 1; number <= 13; number++) {
+		//トランプの数とスートを組み合わせる
+		for(int number = TRUMP_MINIMUM_NUMBER; number <= TRUMP_MUXIMUM_NUMBER; number++) {
 			
-			//
-			trump.addCard(new Card(Card.SUIT_CLUB, number));
-			//
-			trump.addCard(new Card(Card.SUIT_DIAMOND, number));
-			//
-			trump.addCard(new Card(Card.SUIT_HEART, number));
-			//
-			trump.addCard(new Card(Card.SUIT_SPADE, number));
+			//クローバーのスートのカードを作る
+			trumpHand.addCard(new Card(Card.SUIT_CLUB, number));
+			//ダイヤモンドのスートのカードを作る
+			trumpHand.addCard(new Card(Card.SUIT_DIAMOND, number));
+			//ハートのスートのカードを作る
+			trumpHand.addCard(new Card(Card.SUIT_HEART, number));
+			//スペードのスートのカードを作る
+			trumpHand.addCard(new Card(Card.SUIT_SPADE, number));
 		}
 		
-		//
-		trump.addCard(new Card(0, Card.JOKER_CONSTANT));
+		//ジョーカーを作る
+		trumpHand.addCard(new Card(0, Card.JOKER_CONSTANT));
 		
-		//
-		return trump;
+		//トランプの手札を返却
+		return trumpHand;
 	}
 
 	/*
