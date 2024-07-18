@@ -1,7 +1,7 @@
 package lesson_5.janken;
 
 /*
- * クラス名:PlayerWithInterface
+ * クラス名:RandomTactics
  * 概要:ランダムに手を決める戦略クラス
  * 作成者:S.Hiruta
  * 作成日:2024/07/01

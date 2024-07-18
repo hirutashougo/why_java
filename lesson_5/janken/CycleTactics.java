@@ -28,7 +28,7 @@ public class CycleTactics implements Tactics {
 	private  int gameCount = INITIAL_GAME_COUNT;
 
 	/*
-	 * 関数名：readTactis
+	 * 関数名：readTactics
 	 * 概要:グー・チョキ・パーの順に手を出す戦略クラス
 	 * 引数：なし
 	 * 戻り値：ジャンケンの手を表す数字(int型)

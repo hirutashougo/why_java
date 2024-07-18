@@ -12,7 +12,7 @@ import lesson_5.janken.RandomTactics;
 import lesson_5.janken.Tactics;
 
 /*
- * クラス名:ObjectJanken
+ * クラス名:ObjectJanken_lesson5_2
  * 概要:戦略インタフェースに対応したジャンケンプログラム
  * 作成者:S.Hiruta
  * 作成日:2024/07/01

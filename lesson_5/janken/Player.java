@@ -1,7 +1,7 @@
 package lesson_5.janken;
 
 /*
- * クラス名:PlayerWithInterface
+ * クラス名:Player
  * 概要:ジャンケンのプレイヤーの情報を管理
  * 作成者:S.Hiruta
  * 作成日:2024/07/01

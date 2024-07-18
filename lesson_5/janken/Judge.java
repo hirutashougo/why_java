@@ -1,7 +1,7 @@
 package lesson_5.janken;
 
 /*
- * クラス名:startJanken
+ * クラス名:Judge
  * 概要:ジャンケンの審判を表すクラス
  * 作成者:S.Hiruta
  * 作成日:2024/06/28
