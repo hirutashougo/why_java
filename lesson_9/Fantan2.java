@@ -32,24 +32,29 @@ public class Fantan2 {
 	*/
 	private static Hand createTrump() {
 
+		//トランプの数字の最大値を表す定数を定義
+		final int TRUMP_MUXIMUM_NUMBER = 13;
+		//トランプの数字の最小数を表す定数を定義
+		final int TRUMP_MINIMUM_NUMBER = 1;
+
 		//全トランプの手札を格納する変数を宣言
-		Hand trump = new Hand();
+		Hand trumpHand = new Hand();
 
 		//スートごとにトランプのカードを揃える
-		for (int number = 1; number <= 13; number++) {
+		for (int number = TRUMP_MINIMUM_NUMBER; number <= TRUMP_MUXIMUM_NUMBER; number++) {
 
 			//クローバーを揃える
-			trump.addCard(new Card(Card.SUIT_CLUB, number));
+			trumpHand.addCard(new Card(Card.SUIT_CLUB, number));
 			//ダイヤモンドを揃える
-			trump.addCard(new Card(Card.SUIT_DIAMOND, number));
+			trumpHand.addCard(new Card(Card.SUIT_DIAMOND, number));
 			//ハートを揃える
-			trump.addCard(new Card(Card.SUIT_HEART, number));
+			trumpHand.addCard(new Card(Card.SUIT_HEART, number));
 			//スペードを揃える
-			trump.addCard(new Card(Card.SUIT_SPADE, number));
+			trumpHand.addCard(new Card(Card.SUIT_SPADE, number));
 		}
 
 		//揃えたカードを返却
-		return trump;
+		return trumpHand;
 	}
 
 	/*
@@ -90,8 +95,8 @@ public class Fantan2 {
 
 		//ゲームの準備をする
 		gameMaster.prepareGame(gameTrump);
-		
-		//
+
+		//トランプを配置したテーブルを表示する
 		System.out.println(gameTable);
 	}
 

@@ -14,11 +14,6 @@ import oldMaid.Table;
  */
 public class OldMaid {
 	
-	//トランプの数字の最大値を表す定数を定義
-	public static final int TRUMP_MUXIMUM_NUMBER = 13;
-	//トランプの数字の最小数を表す定数を定義
-	public static final int TRUMP_MINIMUM_NUMBER = 1;
-	
 	/*
 	 * 関数名：createTrump
 	 * 概要:トランプの手を作る
@@ -28,6 +23,11 @@ public class OldMaid {
 	 * 作成日：2024/07/02
 	*/
 	private static Hand createTrump() {
+		
+		//トランプの数字の最大値を表す定数を定義
+		final int TRUMP_MUXIMUM_NUMBER = 13;
+		//トランプの数字の最小数を表す定数を定義
+		final int TRUMP_MINIMUM_NUMBER = 1;
 		
 		//トランプの手を格納する変数を定義
 		Hand trumpHand = new Hand();
@@ -62,35 +62,35 @@ public class OldMaid {
 	*/
 	public static void main(String[] args) {
 
-		//
-		Master master = new Master();
+		//ゲームマスターを生成
+		Master gameMaster = new Master();
 
-		//
-		Table field = new Table();
+		//ゲームで使用するテーブルを生成
+		Table gameField = new Table();
 
 		//プレイヤー村田を生成
-		Player murata = new Player("村田", master, field);
+		Player murata = new Player("村田", gameMaster, gameField);
 		//プレイヤー山田を生成
-		Player yamada = new Player("山田", master, field);
+		Player yamada = new Player("山田", gameMaster, gameField);
 		//プレイヤー齋藤を生成
-		Player saito = new Player("齋藤", master, field);
+		Player saito = new Player("齋藤", gameMaster, gameField);
 
 		//進行役へプレイヤーを登録
 		//村田を認識
-		master.registerPlayer(murata);
+		gameMaster.registerPlayer(murata);
 		//山田を認識
-		master.registerPlayer(yamada);
+		gameMaster.registerPlayer(yamada);
 		//齋藤を認識
-		master.registerPlayer(saito);
+		gameMaster.registerPlayer(saito);
 		
 		//
 		Hand trump = createTrump();
 		
 		//
-		master.prepareGame(trump);
+		gameMaster.prepareGame(trump);
 		
 		//
-		master.startGame();
+		gameMaster.startGame();
 	}
 
 }

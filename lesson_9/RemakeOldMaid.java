@@ -30,7 +30,7 @@ import trump.Table;
  * 作成日：2024/07/02
 */
 public class RemakeOldMaid {
-	
+
 	/*
 	 * 関数名：main
 	 * 概要:ババ抜きを行うクラス
@@ -40,28 +40,31 @@ public class RemakeOldMaid {
 	 * 作成日：2024/07/02
 	*/
 	private static Hand createTrump() {
-		
+
+		//トランプの数字の最小数を表す定数を定義
+		final int TRUMP_MINIMUM_NUMBER = 1;
+
 		//トランプを用意する
-		Hand trump = new Hand();
-		
+		Hand trumpHand = new Hand();
+
 		//スートごとにトランプを生成
-		for(int number = 1; number <= Card.CARD_NUMBER; number++) {
-			
+		for (int number = TRUMP_MINIMUM_NUMBER; number <= Card.CARD_NUMBER; number++) {
+
 			//クローバーのトランプを生成
-			trump.addCard(new Card(Card.SUIT_CLUB, number));
+			trumpHand.addCard(new Card(Card.SUIT_CLUB, number));
 			//ダイヤモンドのトランプを生成
-			trump.addCard(new Card(Card.SUIT_DIAMOND, number));
+			trumpHand.addCard(new Card(Card.SUIT_DIAMOND, number));
 			//ハートのトランプを生成
-			trump.addCard(new Card(Card.SUIT_HEART, number));
+			trumpHand.addCard(new Card(Card.SUIT_HEART, number));
 			//スペードのトランプを生成
-			trump.addCard(new Card(Card.SUIT_SPADE, number));
+			trumpHand.addCard(new Card(Card.SUIT_SPADE, number));
 		}
-		
+
 		//ジョーカーを生成
-		trump.addCard(new Joker());
-		
+		trumpHand.addCard(new Joker());
+
 		//用意したトランプを返却
-		return trump;
+		return trumpHand;
 	}
 
 	/*
@@ -76,7 +79,7 @@ public class RemakeOldMaid {
 
 		//ゲームの進行役を呼ぶ
 		Master gameMaster = new Master();
-		
+
 		//ルールの生成
 		Rule gameRule = new OldMaidRule();
 
@@ -97,13 +100,13 @@ public class RemakeOldMaid {
 		gameMaster.registerPlayer(playerYamada);
 		//齋藤を認識
 		gameMaster.registerPlayer(playerSaito);
-		
+
 		//トランプを生成
 		Hand gameTrump = createTrump();
-		
+
 		//ゲームの準備をする
 		gameMaster.prepareGame(gameTrump);
-		
+
 		//ゲームを開始する
 		gameMaster.startGame();
 	}
