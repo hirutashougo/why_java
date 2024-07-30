@@ -86,8 +86,8 @@ public class Master {
 			gamePlayer.playGame(nextPlayer);
 		}
 
-		//ババ抜きを終了しましたと表示
-		System.out.println("【ババ抜きを終了しました】");
+		//ゲームを終了しましたと表示
+		System.out.println("【ゲームを終了しました】");
 	}
 
 	/*

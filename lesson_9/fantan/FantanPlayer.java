@@ -1,13 +1,14 @@
 package lesson_9.fantan;
 
+//trumpパッケージのCardクラスをインポート
 import trump.Card;
-//
+//trumpパッケージのMasterクラスをインポート
 import trump.Master;
-//
+//trumpパッケージのPlayerクラスをインポート
 import trump.Player;
-//
+//trumpパッケージのRuleクラスをインポート
 import trump.Rule;
-//
+//trumpパッケージのTableクラスをインポート
 import trump.Table;
 
 /*
@@ -24,7 +25,7 @@ public class FantanPlayer extends Player {
 	/*
 	 * コンストラクタ名：Player
 	 * 概要:プレイヤーに関する情報を初期化して宣言
-	 * 引数：
+	 * 引数：プレイヤーの名前(String型), 進行役(Master型), ゲームに使用するテーブル(Table型), 
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
@@ -36,7 +37,7 @@ public class FantanPlayer extends Player {
 
 	/*
 	 * 関数名：playGame
-	 * 概要:順番を指名する
+	 * 概要:ゲームを進行させる
 	 * 引数：次のプレイヤー(Player型)
 	 * 戻り値：なし
 	 * 作成者：S.Hiruta
@@ -64,7 +65,7 @@ public class FantanPlayer extends Player {
 			
 			//手札がなくなったら上がりを宣言
 			if(playerHand.getNumberOfCards() == 0) {
-				//
+				//進行役が上がりを宣言
 				gameMaster.declareWin(this);
 			}
 			
@@ -99,17 +100,15 @@ public class FantanPlayer extends Player {
 	 * 作成日：2024/07/02
 	*/
 	public void receiveCard(Card receivedCard) {
+		
+		//七並べの基準となるカード番号を定数化
+		final int fanatanNumber = 7;
 
 		//受け取ったカードの数字を確認
 		int receivedNumber = receivedCard.getNumber();
-		
-//		//受け取ったカードを格納しておく配列を宣言
-//		Card[] holdingCard = new Card[1];
-//		//受け取ったカードを手に持つ
-//		holdingCard[0] = receivedCard;
 
 		//受け取ったカードが7の場合
-		if (receivedNumber == 7) {
+		if (receivedNumber == fanatanNumber) {
 
 			//テーブルにカードを置いたと宣言
 			System.out.println(playerName + ":" + receivedCard + "を置きました。");

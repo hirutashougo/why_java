@@ -1,15 +1,24 @@
 package lesson_9;
 
+//fantanパッケージのFantanMasterクラスをインポート
 import fantan.FantanMaster;
+//fantanパッケージのFantanPlayerクラスをインポート
 import fantan.FantanPlayer;
+//fantanパッケージのFantanRuleクラスをインポート
 import fantan.FantanRule;
+//fantanパッケージのFantanTableクラスをインポート
 import fantan.FantanTable;
-//
+//trumpパッケージのCardクラスをインポート
 import trump.Card;
+//trumpパッケージのHandクラスをインポート
 import trump.Hand;
+//trumpパッケージのMasterクラスをインポート
 import trump.Master;
+//trumpパッケージのPlayerクラスをインポート
 import trump.Player;
+//trumpパッケージのRuleクラスをインポート
 import trump.Rule;
+//trumpパッケージのTableクラスをインポート
 import trump.Table;
 
 /*
