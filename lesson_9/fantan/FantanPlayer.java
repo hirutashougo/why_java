@@ -102,13 +102,13 @@ public class FantanPlayer extends Player {
 	public void receiveCard(Card receivedCard) {
 		
 		//七並べの基準となるカード番号を定数化
-		final int fanatanNumber = 7;
+		final int FANTAN_NUMBER = 7;
 
 		//受け取ったカードの数字を確認
 		int receivedNumber = receivedCard.getNumber();
 
 		//受け取ったカードが7の場合
-		if (receivedNumber == fanatanNumber) {
+		if (receivedNumber == FANTAN_NUMBER) {
 
 			//テーブルにカードを置いたと宣言
 			System.out.println(playerName + ":" + receivedCard + "を置きました。");

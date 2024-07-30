@@ -30,7 +30,7 @@ public class FantanRule implements Rule {
 	 * 関数名：findCandidate
 	 * 概要:テーブルに出すことが可能なカードを探す
 	 * 引数：手札(Hand型), ゲームに使用するテーブル(Table型)
-	 * 戻り値：テーブルに出せるカードの組み合わせ(見つからない場合はnullを返す)(Card型)
+	 * 戻り値：テーブルに出せるカードの組み合わせ(見つからない場合はnullを返す)(Card[]型)
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
