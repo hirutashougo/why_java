@@ -34,13 +34,13 @@ public class OldMaidTable implements Table {
 
 			//何のカードをしてたか表示
 			System.out.print(playerCard[index] + " ");
-			
-			//捨てられたカードはテーブルに置かれる
-			gameTable.add(playerCard);
 		}
 
 		//捨てたと表示
 		System.out.println("を捨てました。");
+		
+		//捨てられたカードはテーブルに置かれる
+		gameTable.add(playerCard);
 
 	}
 

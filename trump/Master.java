@@ -143,4 +143,18 @@ public class Master {
 			System.out.println(gameLoser + "さんの負けです!");
 		}
 	}
+	
+	/*
+	 * 関数名：getPlayerCount
+	 * 概要:プレイヤーに残りのプレイ人数を教える
+	 * 引数：なし
+	 * 戻り値：残りのプレイヤー人数(int型)
+	 * 作成者：S.Hiruta
+	 * 作成日：2024/07/02
+	*/
+	public int getPlayerCount() {
+		
+		//プレイヤーの残り人数を伝える
+		return playersList.size();
+	}
 }

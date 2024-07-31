@@ -23,10 +23,10 @@ import trump.Table;
  * 作成日:2024/07/02
  */
 public class OldMaidPlayer extends Player {
-	
+
 	//乱数生成のための変数を宣言
 	Random randomnumber = new Random();
-	
+
 	//手札の最小数を定数で宣言
 	static final int MINIMUM_HAND_NUMBER = 1;
 
@@ -56,40 +56,44 @@ public class OldMaidPlayer extends Player {
 		//引く相手の手札に向かい合う
 		Hand nextHand = ((OldMaidPlayer) nextPlayer).showHand();
 
-		//カードを引く相手の手札の数を確認
-		int rndomRange = nextHand.getNumberOfCards();
-		//手札からどのカードを引くか決める
-		int rndomNumber = randomnumber.nextInt(rndomRange);
-		//手札からカードを引く
-		Card pickedCard = nextHand.pickCard((int)rndomNumber);
+		//カードを引くことでゲームが終了しない場合
+		if (gameMaster.getPlayerCount() != MINIMUM_HAND_NUMBER) {
 
-		//誰から何を引いたか宣言
-		System.out.println(this + ":" + nextPlayer + "さんから" + pickedCard + "を引きました");
+			//カードを引く相手の手札の数を確認
+			int randomRange = nextHand.getNumberOfCards();
+			//手札からどのカードを引くか決める
+			int rndomNumber = randomnumber.nextInt(randomRange);
+			//手札からカードを引く
+			Card pickedCard = nextHand.pickCard(rndomNumber);
 
-		//引いたカードを手札に加え、同じものがあればテーブルに捨てる
-		playerHand.addCard(pickedCard);
+			//誰から何を引いたか宣言
+			System.out.println(this + ":" + nextPlayer + "さんから" + pickedCard + "を引きました");
 
-		//同じ数のカードを探す
-		Card[] sameCards = gameRule.findCandidate(playerHand, gameTable);
+			//引いたカードを手札に加え、同じものがあればテーブルに捨てる
+			playerHand.addCard(pickedCard);
 
-		//同じ数のカードがあった場合
-		if (sameCards != null) {
+			//同じ数のカードを探す
+			Card[] sameCards = gameRule.findCandidate(playerHand, gameTable);
 
-			//捨てる組み合わせを見せる
-			System.out.print(this + ":");
-			//カードをテーブルに捨てる
-			gameTable.putCard(sameCards);
-			
-			//手札がなくなったら上がりを宣言
-			if (playerHand.getNumberOfCards() == 0) {
-				//勝利を宣言
-				gameMaster.declareWin(this);
+			//同じ数のカードがあった場合
+			if (sameCards != null) {
 
-				//手札がまだある場合
-			} else {
+				//捨てる組み合わせを見せる
+				System.out.print(this + ":");
+				//カードをテーブルに捨てる
+				gameTable.putCard(sameCards);
 
-				//残りの手札数を提示
-				System.out.println(this + ":残りの手札は" + playerHand + "です");
+				//手札がなくなったら上がりを宣言
+				if (playerHand.getNumberOfCards() == 0) {
+					//勝利を宣言
+					gameMaster.declareWin(this);
+
+					//手札がまだある場合
+				} else {
+
+					//残りの手札数を提示
+					System.out.println(this + ":残りの手札は" + playerHand + "です");
+				}
 			}
 		}
 	}
@@ -120,9 +124,9 @@ public class OldMaidPlayer extends Player {
 
 	/*
 	 * 関数名：receiveCard
-	 * 概要:
-	 * 引数：なし
-	 * 戻り値：
+	 * 概要:カードを引き、同じ数字があれば捨てる
+	 * 引数：受け取ったカード(Card型)
+	 * 戻り値：なし
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
