@@ -27,13 +27,14 @@ public class OldMaidPlayer extends Player {
 	//乱数生成のための変数を宣言
 	Random randomnumber = new Random();
 
-	//手札の最小数を定数で宣言
-	static final int MINIMUM_HAND_NUMBER = 1;
+	//ゲーム人数の最小値を定数化
+	static final int MINIMUM_PLAYER_NUMBER = 1;
+	
 
 	/*
 	 * コンストラクタ名：OldMaidPlayer
 	 * 概要:プレイヤーに関する情報を初期化して宣言
-	 * 引数：
+	 * 引数：プレイヤー名(String型),マスター名(Master型),テーブル(Table型),ババ抜きのルール(Rule型)
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
 	*/
@@ -46,7 +47,7 @@ public class OldMaidPlayer extends Player {
 	/*
 	 * 関数名：playGame
 	 * 概要:順番を指名する
-	 * 引数：なし
+	 * 引数：次の順番のプレイヤー(Player型)
 	 * 戻り値：なし
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
@@ -98,7 +99,7 @@ public class OldMaidPlayer extends Player {
 		}
 
 		//手札が残っていて、ゲームの最後の一人ではない場合
-		if (playerHand.getNumberOfCards() != 0 && gameMaster.getPlayerCount() != MINIMUM_HAND_NUMBER) {
+		if (playerHand.getNumberOfCards() != 0 && gameMaster.getPlayerCount() != MINIMUM_PLAYER_NUMBER) {
 
 			//残りの手札数を提示
 			System.out.println(this + ":残りの手札は" + playerHand + "です");

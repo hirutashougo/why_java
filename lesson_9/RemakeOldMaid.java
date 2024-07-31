@@ -22,13 +22,11 @@ import trump.Rule;
 import trump.Table;
 
 /*
- * クラス名：RemakeOldMaid
- * 概要:ババ抜きを行うクラス
- * 引数：なし
- * 戻り値：なし
- * 作成者：S.Hiruta
- * 作成日：2024/07/02
-*/
+ * クラス名:RemakeOldMaid
+ * 概要:ババ抜きを行う
+ * 作成者:S.Hiruta
+ * 作成日:2024/07/31
+ */
 public class RemakeOldMaid {
 
 	/*

@@ -22,7 +22,7 @@ public class OldMaidTable implements Table {
 	/*
 	 * 関数名：putCard
 	 * 概要:なんのカードを捨てたのか示す
-	 * 引数：なし
+	 * 引数：数字が同じカード(Card[]型)
 	 * 戻り値：なし
 	 * 作成者：S.Hiruta
 	 * 作成日：2024/07/02
