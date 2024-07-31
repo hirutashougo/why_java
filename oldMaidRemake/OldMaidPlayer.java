@@ -56,18 +56,24 @@ public class OldMaidPlayer extends Player {
 		//引く相手の手札に向かい合う
 		Hand nextHand = ((OldMaidPlayer) nextPlayer).showHand();
 
-		//カードを引くことでゲームが終了しない場合
-		if (gameMaster.getPlayerCount() != MINIMUM_HAND_NUMBER) {
+		//カードを引く相手の手札の数を確認
+		int randomRange = nextHand.getNumberOfCards();
+		//手札からどのカードを引くか決める
+		int rndomNumber = randomnumber.nextInt(randomRange);
+		//手札からカードを引く
+		Card pickedCard = nextHand.pickCard(rndomNumber);
 
-			//カードを引く相手の手札の数を確認
-			int randomRange = nextHand.getNumberOfCards();
-			//手札からどのカードを引くか決める
-			int rndomNumber = randomnumber.nextInt(randomRange);
-			//手札からカードを引く
-			Card pickedCard = nextHand.pickCard(rndomNumber);
+		//誰から何を引いたか宣言
+		System.out.println(this + ":" + nextPlayer + "さんから" + pickedCard + "を引きました");
 
-			//誰から何を引いたか宣言
-			System.out.println(this + ":" + nextPlayer + "さんから" + pickedCard + "を引きました");
+		//カードを引いたら相手が上がるとき
+		if (nextHand.getNumberOfCards() == 0) {
+
+			//相手の勝利を宣言
+			gameMaster.declareWin(nextPlayer);
+
+			//カードを引いても相手は上がらないとき
+		} else {
 
 			//引いたカードを手札に加え、同じものがあればテーブルに捨てる
 			playerHand.addCard(pickedCard);
@@ -87,14 +93,15 @@ public class OldMaidPlayer extends Player {
 				if (playerHand.getNumberOfCards() == 0) {
 					//勝利を宣言
 					gameMaster.declareWin(this);
-
-					//手札がまだある場合
-				} else {
-
-					//残りの手札数を提示
-					System.out.println(this + ":残りの手札は" + playerHand + "です");
 				}
 			}
+		}
+
+		//手札が残っていて、ゲームの最後の一人ではない場合
+		if (playerHand.getNumberOfCards() != 0 && gameMaster.getPlayerCount() != MINIMUM_HAND_NUMBER) {
+
+			//残りの手札数を提示
+			System.out.println(this + ":残りの手札は" + playerHand + "です");
 		}
 	}
 
@@ -107,13 +114,6 @@ public class OldMaidPlayer extends Player {
 	 * 作成日：2024/07/02
 	*/
 	public Hand showHand() {
-
-		//手札が残り一枚の場合
-		if (playerHand.getNumberOfCards() == MINIMUM_HAND_NUMBER) {
-
-			//勝利を宣言
-			gameMaster.declareWin(this);
-		}
 
 		//手札をシャッフルする
 		playerHand.shuffleCards();
